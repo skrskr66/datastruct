@@ -135,3 +135,5 @@ void SListRemoveAll(Slist *s,SDListTypeData v){
     free(next);
   }
 }
+
+void SListRever
