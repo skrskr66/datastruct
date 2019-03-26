@@ -136,4 +136,21 @@ void SListRemoveAll(Slist *s,SDListTypeData v){
   }
 }
 
-void SListRever
+struct Node*  SListReverse(struct Node *s){
+  //定义三个指针
+  struct Node *result = NULL;
+  struct Node *c = s;
+  
+  while(c != NULL){
+    Node *next = c->next;
+
+    c->next = result;
+    result = c;
+
+    c = next;
+
+  }
+
+  return result;
+  
+}
