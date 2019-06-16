@@ -75,6 +75,8 @@ public:
       {
         strcpy(newstr,_str);
       }
+      //要记住先将原空间释放之后，在将新空间赋给老空间
+      delete[] _str;
       _str = newstr;
       _capacity = newsize - 1;
     }
