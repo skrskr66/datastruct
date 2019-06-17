@@ -1,7 +1,7 @@
 #pragma once 
 #include <iostream>
 #include <assert.h>
-
+#include <cstring>
 template<class T>
 class Vector
 {
@@ -58,7 +58,7 @@ public:
   
   void Reserve(size_t n)
   {
-    if(n > _end_of_storage)
+    if(n > Capacity())
     {
       size_t size = Size();
       //开新空间
@@ -136,20 +136,45 @@ public:
 
   void Insert(iterator pos,const T& x)
   {
-
+    assert(pos < _finsh);
+    if(_finsh == _end_of_storage)
+    {
+      size_t n = pos - _start;
+      size_t newcapacity = Capacity() == 0 ? 4 : Capacity() * 2;
+      Reserve(newcapacity);
+      pos = _start + n;
+    }
+    iterator end = _finsh - 1;
+    while(end >= pos)
+    {
+      *(end + 1) = *end;
+      --end;
+    }
+    *pos = x;
+    _finsh++;
   }
 
-  iterator Earse(iterator pos)
+  iterator Erase(iterator pos)
   {
+    assert(pos < _finsh);
+    iterator it = pos;
+    while(it < _finsh)
+    {
+      *it = *(it + 1);
+      it++;
+    }
 
+    --_finsh;
+
+    return pos;
   }
 
-  size_t Size()
+  size_t Size()const
   {
     return _finsh - _start;
   }
   
-  size_t Capacity()
+  size_t Capacity()const
   {
     return _end_of_storage - _start;
   }
