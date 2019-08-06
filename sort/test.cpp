@@ -22,7 +22,7 @@ void TestBite()
 
 void TestBubbleSort()
 {
-  std::vector<int> arr{ 3,5,1,-7,4,9,-6,8,10,4 };
+	std::vector<int> arr{ 3,5,1,-7,4,9,-6,8,10,4 };
 	BubbleSort(arr);
 
 	for (auto& e : arr)
@@ -32,9 +32,81 @@ void TestBubbleSort()
 	std::cout << std::endl;
 }
 
+void TestStraightInsertionSort()
+{
+	std::vector<int> arr{ 3,5,1,-7,4,9,-6,8,10,4 };
+	StraightInsertionSort(arr);
+	for (auto& e : arr)
+	{
+		std::cout << e << " ";
+	}
+	std::cout << std::endl;
+}
+
+void TestSelectionSort()
+{
+	std::vector<int> arr{ 3,5,1,-7,4,9,-6,8,10,4 };
+	SelectionSort(arr);
+	for (auto& e : arr)
+	{
+		std::cout << e << " ";
+	}
+	std::cout << std::endl;
+}
+
+void TestShellSort()
+{
+	std::vector<int> arr{ 3,5,1,-7,4,9,-6,8,10,4 };
+	ShellSort(arr);
+	for (auto& e : arr)
+	{
+		std::cout << e << " ";
+	}
+	std::cout << std::endl;
+}
+
+void TestQuickSort()
+{
+	std::vector<int> arr{ 3,5,1,-7,4,9,-6,8,10,4 };
+	QuickSort(arr,0,arr.size() - 1);
+	for (auto& e : arr)
+	{
+		std::cout << e << " ";
+	}
+	std::cout << std::endl;
+}
+
+void TestHeapSort()
+{
+	std::vector<int> arr{ 10,5,4,1,2,3 };
+	HeapSort(arr, arr.size());
+	for (auto& e : arr)
+	{
+		std::cout << e << " ";
+	}
+	std::cout << std::endl;
+}
+
+void TestMerge()
+{
+	std::vector<int> arr{ 3,5,1,-7,4,9,-6,8,10,4 };
+	Merge(arr, arr.size());
+	for (auto& e : arr)
+	{
+		std::cout << e << " ";
+	}
+	std::cout << std::endl;
+}
+
 int main()
 {
-	TestBubbleSort();
+	//TestMerge();
+	//TestHeapSort();
+	//TestQuickSort();
+	//TestShellSort();
+	//TestSelectionSort();
+	TestStraightInsertionSort();
+	//TestBubbleSort();
 	//TestBite();
 	return 0;
 }
