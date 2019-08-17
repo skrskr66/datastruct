@@ -48,7 +48,6 @@ class P2PClient
         host = ntohl(~mask->sin_addr.s_addr);
         for(int i = 2;i < host - 1;i++)
         {
-          std::cerr<<"come in"<<std::endl;
           struct in_addr ip;
           ip.s_addr = htonl(net + i);
           list.push_back(inet_ntoa(ip));
@@ -305,9 +304,3 @@ public:
     }
 };
 
-int main()
-{
-  P2PClient client(9000);
-  client.Start();
-  return 0;
-}

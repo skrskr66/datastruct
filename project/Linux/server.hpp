@@ -160,10 +160,3 @@ class P2PServer
       _server.listen("0.0.0.0",port);
     }
 };
-
-int main()
-{
-  P2PServer srv;
-  srv.Start(9000);
-  return 0;
-}
