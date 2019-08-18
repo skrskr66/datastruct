@@ -123,8 +123,6 @@ class P2PServer
     {
       size_t pos1 = range_val.find("=");
       size_t pos2 = range_val.find("-");
-      std::cout<<pos1<<"  "<<pos2<<"\n";
-      std::cout<<range_val<<"\n";
       if((pos1 == std::string::npos) || (pos2 == std::string::npos))
       {
         std::cerr <<"range"<<range_val<<"format error\n";

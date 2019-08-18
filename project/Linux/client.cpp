@@ -27,14 +27,14 @@ class P2PClient
   private:  
     bool GetHostList(std::vector<std::string> &list)
     {
-      struct ifaddrs *addrs = NULL;
+      struct ifaddrs *addrs = NULL;//定义网络接口，获取网络主机ip
       struct sockaddr_in *ip = NULL;
       struct sockaddr_in *mask = NULL;
-      getifaddrs(&addrs);
+      getifaddrs(&addrs);//获取本机ip地址的接口函数
       for(;addrs != NULL;addrs = addrs->ifa_next)
       {
-        ip = (struct sockaddr_in*)addrs->ifa_addr;
-        mask = (struct sockaddr_in*)addrs->ifa_netmask;
+        ip = (struct sockaddr_in*)addrs->ifa_addr;//ifa_addr 链表指针-指向下一个网卡信息
+        mask = (struct sockaddr_in*)addrs->ifa_netmask;//子网掩码
         if(ip->sin_family != AF_INET)
         {
           continue;
@@ -44,11 +44,10 @@ class P2PClient
           continue;
         }
         uint32_t net,host;
-        net = ntohl(ip->sin_addr.s_addr & mask->sin_addr.s_addr);
-        host = ntohl(~mask->sin_addr.s_addr);
+        net = ntohl(ip->sin_addr.s_addr & mask->sin_addr.s_addr);//网络号
+        host = ntohl(~mask->sin_addr.s_addr);//主机号
         for(int i = 2;i < host - 1;i++)
         {
-          std::cerr<<"come in"<<std::endl;
           struct in_addr ip;
           ip.s_addr = htonl(net + i);
           list.push_back(inet_ntoa(ip));
