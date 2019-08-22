@@ -50,7 +50,7 @@ class P2PClient
         {
           struct in_addr ip;
           ip.s_addr = htonl(net + i);
-          list.push_back(inet_ntoa(ip));
+          list.push_back(inet_ntoa(ip));//将32位的网络字节序二进制转换为十进制的点分十进制ip地址
         }
       }
       freeifaddrs(addrs);//必须要释放

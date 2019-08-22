@@ -143,14 +143,9 @@ struct Node*  SListReverse(struct Node *s){
   
   while(c != NULL){
     Node *next = c->next;
-
     c->next = result;
     result = c;
-
     c = next;
-
   }
-
   return result;
-  
 }
